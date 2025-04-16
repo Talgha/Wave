@@ -1,0 +1,501 @@
+/* Basic Reset & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    background-color: #0a0a1a; /* Dark blue/purple background */
+    color: #e0e0ff; /* Light text color */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+     /* Optional: Add a subtle futuristic background */
+    /* background-image: url('../images/futuristic-bg.jpg'); */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Header and Navigation */
+header {
+    background: rgba(15, 15, 30, 0.85); /* Slightly transparent dark header */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3); /* Cyan border */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 5px #0ff; /* Cyan glow */
+}
+
+.logo .highlight {
+    color: #00ffff; /* Cyan */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: #c0c0ff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #00ffff; /* Cyan */
+    border-bottom-color: #00ffff; /* Cyan underline */
+}
+
+nav ul li a i { /* Icon styling */
+    margin-right: 0.5em;
+}
+
+
+/* Main Content Area */
+main {
+    flex-grow: 1;
+    padding: 2rem 5%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 8px #0ff;
+}
+
+h1 i {
+    margin-right: 0.5em;
+    color: #00ffff;
+}
+
+h2 {
+    color: #00ffff; /* Cyan headings for sections */
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.5);
+    padding-bottom: 0.5rem;
+}
+
+h2 i {
+    margin-right: 0.5em;
+}
+
+/* Footer */
+footer {
+    background: rgba(15, 15, 30, 0.9);
+    color: #a0a0cc;
+    text-align: center;
+    padding: 1rem 5%;
+    margin-top: 2rem; /* Ensure space before footer */
+    border-top: 1px solid rgba(0, 255, 255, 0.3); /* Cyan border */
+    font-size: 0.9rem;
+}
+
+/* Page Specific Styles */
+
+/* Map Page */
+#map-page .content-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start; /* Align items to the top */
+    background: rgba(20, 20, 40, 0.7);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+#map-canvas {
+    flex-grow: 1;
+    height: 60vh; /* Adjust height as needed */
+    background-color: #1a1a3a; /* Placeholder bg */
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0a0cc;
+}
+
+.directions-panel {
+    width: 300px; /* Fixed width for panel */
+    flex-shrink: 0; /* Prevent panel from shrinking */
+}
+
+.directions-panel h2 {
+     font-size: 1.2rem;
+}
+
+.directions-panel input[type="text"] {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 4px;
+    color: #fff;
+    font-family: inherit;
+}
+
+.directions-panel button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #00aaaa;
+    color: #0a0a1a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.directions-panel button:hover {
+    background-color: #00ffff;
+}
+
+#directions-output {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #c0c0ff;
+    max-height: 30vh; /* Limit height and make scrollable */
+    overflow-y: auto;
+    padding-right: 5px; /* Space for scrollbar */
+}
+/* Scrollbar styling (optional, works in WebKit browsers) */
+#directions-output::-webkit-scrollbar { width: 5px; }
+#directions-output::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 5px;}
+#directions-output::-webkit-scrollbar-thumb { background: #00aaaa; border-radius: 5px;}
+#directions-output::-webkit-scrollbar-thumb:hover { background: #00ffff; }
+
+
+/* Data Page */
+#data-page .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.data-card {
+    background: rgba(20, 20, 40, 0.7);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.data-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.data-card h2 {
+    font-size: 1.3rem;
+}
+
+.data-card ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.data-card li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.data-card .rate, .data-card .temp, .data-card .condition {
+    font-weight: bold;
+    color: #fff;
+    margin-left: 0.5em;
+}
+.data-card .temp { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+.data-card .condition { display: block; font-size: 1.1rem; }
+.data-card .location { font-size: 0.9rem; color: #a0a0cc; margin-bottom: 1rem; }
+.data-card .forecast { margin-top: 1rem; font-size: 0.9rem; color: #c0c0ff;}
+.data-card small { display: block; margin-top: 1rem; font-size: 0.8rem; color: #8080aa; font-style: italic;}
+
+.fa-spinner { color: #00ffff; margin-left: 5px;}
+
+
+/* Listings Page (Real Estate, Vehicles, Auctions) */
+#listings-page .filters {
+    background: rgba(20, 20, 40, 0.7);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap; /* Allow filters to wrap on smaller screens */
+     border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+#listings-page .filters input[type="text"],
+#listings-page .filters select {
+    padding: 0.7rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 4px;
+    color: #fff;
+    font-family: inherit;
+    min-width: 150px; /* Ensure decent width */
+}
+/* Style select dropdown arrow */
+#listings-page .filters select {
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%2300ffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Add custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    padding-right: 2rem; /* Space for the arrow */
+}
+#listings-page .filters select option {
+    background-color: #1a1a3a; /* Dark background for options */
+    color: #e0e0ff;
+}
+
+#listings-page .filters button {
+    padding: 0.7rem 1.5rem;
+    background-color: #00aaaa;
+    color: #0a0a1a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#listings-page .filters button:hover {
+    background-color: #00ffff;
+}
+
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card { /* Base card style */
+    background: rgba(25, 25, 50, 0.8);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Stack image and content */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+.listing-card img, .auction-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Crop images nicely */
+    display: block;
+}
+
+.card-content {
+    padding: 1rem;
+    flex-grow: 1; /* Allow content to fill space */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.card-content .price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #00ffff; /* Cyan price */
+    margin-bottom: 0.5rem;
+}
+
+.card-content .details,
+.card-content .location {
+    font-size: 0.9rem;
+    color: #c0c0ff;
+    margin-bottom: 0.5rem;
+}
+.card-content .details i,
+.card-content .location i {
+    margin-right: 0.4em;
+    color: #00aaaa; /* Slightly darker cyan for icons */
+    width: 1.2em; /* Align icons */
+    text-align: center;
+}
+
+.status-tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: auto; /* Push tag to bottom */
+    align-self: flex-start; /* Align tag to left */
+}
+
+.status-tag.rent {
+    background-color: #ff8c00; /* Orange for rent */
+    color: #0a0a1a;
+}
+
+.status-tag.sale {
+    background-color: #32cd32; /* Lime green for sale */
+     color: #0a0a1a;
+}
+
+/* Auction Specific */
+.auction-card .current-bid {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+.auction-card .bid-amount {
+    font-weight: bold;
+    color: #fff;
+}
+.auction-card .time-left {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #ffcc00; /* Yellowish for time */
+}
+.auction-card .timer { font-weight: bold; }
+
+.auction-card .bid-section {
+    margin-top: auto; /* Push bidding to bottom */
+    display: flex;
+    gap: 0.5rem;
+}
+
+.auction-card .bid-section input[type="number"] {
+    flex-grow: 1;
+    padding: 0.6rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 4px;
+    color: #fff;
+    font-family: inherit;
+    /* Remove spinner buttons on number input (optional) */
+     -moz-appearance: textfield;
+}
+.auction-card .bid-section input[type="number"]::-webkit-outer-spin-button,
+.auction-card .bid-section input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.auction-card .bid-button {
+    padding: 0.6rem 1rem;
+    background-color: #00aaaa;
+    color: #0a0a1a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.auction-card .bid-button:hover {
+    background-color: #00ffff;
+}
+
+.placeholder-note {
+    text-align: center;
+    margin-top: 2rem;
+    color: #a0a0cc;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    nav ul {
+        /* Basic mobile menu idea - needs JS for toggle */
+        /* display: none; */
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Adjust based on header height */
+        left: 0;
+        width: 100%;
+        background: rgba(15, 15, 30, 0.95);
+        padding: 1rem 0;
+         /* Add JS to toggle this class */
+    }
+
+    nav ul li {
+        margin: 0;
+        text-align: center;
+        padding: 0.8rem 0;
+    }
+
+    nav ul li a {
+        border-bottom: none;
+        display: block;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    #map-page .content-container {
+        flex-direction: column;
+    }
+
+     .directions-panel {
+        width: 100%; /* Full width on mobile */
+        margin-bottom: 1.5rem;
+    }
+
+    #map-canvas {
+        height: 50vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    #listings-page .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+     #listings-page .filters button {
+        width: 100%;
+    }
+    .listings-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+}
