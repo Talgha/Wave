@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoNav - Futuristic Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FUTURA<span class="highlight">WAVE</span></div>
+            <ul>
+                <li><a href="index.html" class="active"><i class="fas fa-map-marker-alt"></i> Map</a></li>
+                <li><a href="weather-finance.html"><i class="fas fa-cloud-sun-rain"></i> Data</a></li>
+                <li><a href="real-estate.html"><i class="fas fa-building"></i> Real Estate</a></li>
+                <li><a href="vehicles.html"><i class="fas fa-car"></i> Vehicles</a></li>
+                <li><a href="auctions.html"><i class="fas fa-gavel"></i> Auctions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="map-page">
+        <h1><i class="fas fa-map-marked-alt"></i> Geo Navigation & Directions</h1>
+        <div class="content-container">
+            <div class="directions-panel">
+                <h2>Get Directions</h2>
+                <input type="text" id="start" placeholder="Enter starting point">
+                <input type="text" id="end" placeholder="Enter destination">
+                <button id="get-directions-btn">Calculate Route</button>
+                <div id="directions-output">
+                    </div>
+            </div>
+            <div id="map-canvas">
+                <p>Loading Map...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FuturaWave Portal. All rights reserved for 90talghawave@gmail.com</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Placeholder function - You need to implement Google Maps JS API
+        function initMap() {
+            const mapCanvas = document.getElementById('map-canvas');
+            if (mapCanvas) {
+                 // Basic map initialization centered on Tbilisi (Example)
+                 const mapOptions = {
+                    center: { lat: 41.7151, lng: 44.8271 }, // Tbilisi coordinates
+                    zoom: 12,
+                    // Add futuristic map styles here if desired
+                    // styles: [ /* Array of map style objects */ ]
+                 };
+                 const map = new google.maps.Map(mapCanvas, mapOptions);
+                 mapCanvas.innerHTML = ''; // Clear the 'Loading Map...' text
+
+                 // Add Directions Service functionality here using google.maps.DirectionsService
+                 // Link it to the button and input fields
+                 const directionsService = new google.maps.DirectionsService();
+                 const directionsRenderer = new google.maps.DirectionsRenderer();
+                 directionsRenderer.setMap(map);
+                 directionsRenderer.setPanel(document.getElementById('directions-output'));
+
+
+                 const getDirectionsBtn = document.getElementById('get-directions-btn');
+                 if (getDirectionsBtn) {
+                    getDirectionsBtn.addEventListener('click', () => {
+                        calculateAndDisplayRoute(directionsService, directionsRenderer);
+                    });
+                 }
+            } else {
+                console.error("Map canvas element not found!");
+            }
+        }
+
+        function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+             const start = document.getElementById('start').value;
+             const end = document.getElementById('end').value;
+             if (!start || !end) {
+                 alert('Please enter both starting point and destination.');
+                 return;
+             }
+             directionsService.route(
+                 {
+                     origin: start,
+                     destination: end,
+                     travelMode: google.maps.TravelMode.DRIVING // Or WALKING, BICYCLING, TRANSIT
+                 },
+                 (response, status) => {
+                     if (status === 'OK') {
+                         directionsRenderer.setDirections(response);
+                     } else {
+                         window.alert('Directions request failed due to ' + status);
+                     }
+                 }
+             );
+         }
+
+         // IMPORTANT: Call initMap. Usually done via the callback in the Google Maps API script URL.
+         // For testing without the API script uncommented, you might call it directly,
+         // but it relies on the Google Maps API being loaded first.
+         // initMap();
+
+         // If you are NOT using the callback in the script tag, you'd load the map like this:
+         // window.onload = initMap;
+         // BUT the callback=initMap parameter in the script URL is the standard way.
+
+         // Placeholder alert for demo purposes if Google API script is commented out
+         if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+             console.warn("Google Maps API script not loaded. Map functionality unavailable. Remember to add your API key.");
+             const mapCanvas = document.getElementById('map-canvas');
+             if(mapCanvas) mapCanvas.innerHTML = '<p style="color: orange;">Google Maps API script not loaded. Please add your API key to index.html.</p>';
+             const directionsPanel = document.querySelector('.directions-panel');
+             if(directionsPanel) directionsPanel.style.display = 'none'; // Hide directions if no map
+         } else {
+             // This ensures initMap runs only after the API is loaded via the script tag's callback
+             // No need to call initMap() here if using the callback parameter.
+         }
+
+    </script>
+</body>
+</html>
