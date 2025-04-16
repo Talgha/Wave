@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auctions - FuturaWave</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FUTURA<span class="highlight">WAVE</span></div>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-map-marker-alt"></i> Map</a></li>
+                <li><a href="weather-finance.html"><i class="fas fa-cloud-sun-rain"></i> Data</a></li>
+                <li><a href="real-estate.html"><i class="fas fa-building"></i> Real Estate</a></li>
+                <li><a href="vehicles.html"><i class="fas fa-car"></i> Vehicles</a></li>
+                <li><a href="auctions.html" class="active"><i class="fas fa-gavel"></i> Auctions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="listings-page">
+        <h1><i class="fas fa-stopwatch-20"></i> Live Auctions</h1>
+        <div class="filters">
+            <input type="text" placeholder="Search auctions...">
+             <select name="category">
+                <option value="">All Categories</option>
+                <option value="electronics">Electronics</option>
+                <option value="collectibles">Collectibles</option>
+                <option value="art">Art</option>
+                 <option value="other">Other</option>
+            </select>
+            <button>Search</button>
+        </div>
+
+        <div class="listings-grid auction-grid">
+             <div class="card auction-card">
+                 <img src="images/placeholder-item.png" alt="Auction Item Image"> <div class="card-content">
+                     <h3>Vintage Chrono Watch</h3>
+                     <p class="current-bid">Current Bid: <span class="bid-amount">$550</span></p>
+                     <p class="time-left">Time Left: <span class="timer">01h 25m 10s</span></p>
+                     <div class="bid-section">
+                         <input type="number" placeholder="Your bid ($)" min="551"> <button class="bid-button">Place Bid</button>
+                     </div>
+                 </div>
+             </div>
+
+             <div class="card auction-card">
+                 <img src="images/placeholder-item-2.png" alt="Auction Item Image"> <div class="card-content">
+                     <h3>Rare Holographic Card</h3>
+                     <p class="current-bid">Current Bid: <span class="bid-amount">$120</span></p>
+                     <p class="time-left">Time Left: <span class="timer">00h 15m 45s</span></p>
+                      <div class="bid-section">
+                         <input type="number" placeholder="Your bid ($)" min="121">
+                         <button class="bid-button">Place Bid</button>
+                     </div>
+                 </div>
+             </div>
+
+             </div>
+         <p class="placeholder-note">Note: Auctions shown are examples. Real-time bidding and timers require complex backend and frontend integration.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FuturaWave Portal. All rights reserved for 90talghawave@gmail.com</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+     <script>
+        // Basic placeholder for auction interaction
+        document.querySelectorAll('.bid-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // This requires user authentication, checking bid amount,
+                // sending bid to server, updating UI in real-time (WebSockets ideal)
+                alert('Bidding functionality requires backend implementation!');
+            });
+        });
+
+        // Placeholder for timer updates (would need real-time data)
+        function updateTimers() {
+            document.querySelectorAll('.timer').forEach(timer => {
+                // Complex logic here to decrement time based on server data
+                // This is just a visual placeholder
+                // timer.textContent = 'Updating...';
+            });
+        }
+        // setInterval(updateTimers, 1000); // Example call, needs real logic
+         console.log("Auction page loaded. Timers and bidding require backend.");
+    </script>
+</body>
+</html>
