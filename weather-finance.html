@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Hub - FuturaWave</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+             <div class="logo">FUTURA<span class="highlight">WAVE</span></div>
+             <ul>
+                <li><a href="index.html"><i class="fas fa-map-marker-alt"></i> Map</a></li>
+                <li><a href="weather-finance.html" class="active"><i class="fas fa-cloud-sun-rain"></i> Data</a></li>
+                <li><a href="real-estate.html"><i class="fas fa-building"></i> Real Estate</a></li>
+                <li><a href="vehicles.html"><i class="fas fa-car"></i> Vehicles</a></li>
+                <li><a href="auctions.html"><i class="fas fa-gavel"></i> Auctions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="data-page">
+        <h1><i class="fas fa-chart-line"></i> Global Data Streams</h1>
+        <div class="grid-container">
+            <section class="data-card weather">
+                <h2><i class="fas fa-cloud"></i> Weather Forecast</h2>
+                 <div class="location">Tbilisi, Georgia</div> <div class="current-weather">
+                     <span class="temp">--°C</span>
+                     <span class="condition">Loading...</span>
+                     <i class="fas fa-spinner fa-spin"></i> </div>
+                <div class="forecast">
+                    <p>5-Day Forecast: Loading...</p>
+                </div>
+                <small>Requires Weather API Key (e.g., OpenWeatherMap)</small>
+            </section>
+
+            <section class="data-card currency">
+                <h2><i class="fas fa-money-bill-wave"></i> Currency Rates</h2>
+                <ul id="currency-rates">
+                    <li>USD/EUR: <span class="rate">Loading... <i class="fas fa-spinner fa-spin"></i></span></li>
+                    <li>USD/GBP: <span class="rate">Loading...</span></li>
+                    <li>USD/GEL: <span class="rate">Loading...</span></li>
+                    </ul>
+                 <small>Requires Forex API (e.g., ExchangeRate-API)</small>
+            </section>
+
+            <section class="data-card crypto">
+                <h2><i class="fab fa-bitcoin"></i> Crypto Watch</h2>
+                 <ul id="crypto-rates">
+                    <li>BTC/USD: <span class="rate">Loading... <i class="fas fa-spinner fa-spin"></i></span></li>
+                    <li>ETH/USD: <span class="rate">Loading...</span></li>
+                    <li>XRP/USD: <span class="rate">Loading...</span></li>
+                    </ul>
+                <small>Requires Crypto API (e.g., CoinGecko, CoinAPI)</small>
+            </section>
+
+            <section class="data-card commodities">
+                <h2><i class="fas fa-gas-pump"></i> Commodities</h2>
+                <ul id="commodity-rates">
+                    <li>Gold (XAU/USD): <span class="rate">Loading... <i class="fas fa-spinner fa-spin"></i></span></li>
+                    <li>Oil (WTI Crude): <span class="rate">Loading...</span></li>
+                    <li>Silver (XAG/USD): <span class="rate">Loading...</span></li>
+                    </ul>
+                 <small>Requires Commodities API (check financial data providers)</small>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FuturaWave Portal. All rights reserved for 90talghawave@gmail.com</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Placeholder functions for fetching data - Needs implementation with actual APIs
+        function fetchWeatherData() {
+            console.log("Fetching weather data...");
+            // Replace with actual API call (e.g., using fetch())
+            // Example: fetch('https://api.openweathermap.org/data/2.5/weather?q=Tbilisi&appid=YOUR_KEY&units=metric')
+            // Remember to handle API keys securely and parse the response.
+            // Update .temp, .condition, .forecast elements
+            setTimeout(() => { // Simulate API delay
+                 const weatherSection = document.querySelector('.weather');
+                 if(weatherSection) {
+                    weatherSection.querySelector('.temp').textContent = '15°C'; // Example data
+                    weatherSection.querySelector('.condition').textContent = 'Partly Cloudy';
+                    weatherSection.querySelector('.fa-spinner').style.display = 'none';
+                    weatherSection.querySelector('.forecast').innerHTML = '<p>5-Day: Sunny intervals, avg 14°C</p>'; // Example
+                 }
+            }, 1500);
+        }
+
+        function fetchCurrencyData() {
+            console.log("Fetching currency data...");
+            // Replace with actual API call
+             setTimeout(() => {
+                const ratesList = document.getElementById('currency-rates');
+                 if (ratesList) {
+                     ratesList.innerHTML = `
+                         <li>USD/EUR: <span class="rate">0.92</span></li>
+                         <li>USD/GBP: <span class="rate">0.80</span></li>
+                         <li>USD/GEL: <span class="rate">2.65</span></li>
+                     `; // Example data
+                 }
+             }, 1800);
+        }
+
+        function fetchCryptoData() {
+            console.log("Fetching crypto data...");
+            // Replace with actual API call
+             setTimeout(() => {
+                const ratesList = document.getElementById('crypto-rates');
+                 if(ratesList) {
+                    ratesList.innerHTML = `
+                        <li>BTC/USD: <span class="rate">$65,000</span></li>
+                        <li>ETH/USD: <span class="rate">$3,500</span></li>
+                        <li>XRP/USD: <span class="rate">$0.50</span></li>
+                    `; // Example data
+                 }
+             }, 2000);
+        }
+
+        function fetchCommodityData() {
+            console.log("Fetching commodity data...");
+            // Replace with actual API call
+             setTimeout(() => {
+                 const ratesList = document.getElementById('commodity-rates');
+                 if (ratesList) {
+                    ratesList.innerHTML = `
+                         <li>Gold (XAU/USD): <span class="rate">$2300</span></li>
+                         <li>Oil (WTI Crude): <span class="rate">$85</span></li>
+                         <li>Silver (XAG/USD): <span class="rate">$28</span></li>
+                    `; // Example data
+                 }
+            }, 2200);
+        }
+
+        // Call fetch functions when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchWeatherData();
+            fetchCurrencyData();
+            fetchCryptoData();
+            fetchCommodityData();
+        });
+    </script>
+</body>
+</html>
