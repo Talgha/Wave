@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles - FuturaWave</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FUTURA<span class="highlight">WAVE</span></div>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-map-marker-alt"></i> Map</a></li>
+                <li><a href="weather-finance.html"><i class="fas fa-cloud-sun-rain"></i> Data</a></li>
+                <li><a href="real-estate.html"><i class="fas fa-building"></i> Real Estate</a></li>
+                <li><a href="vehicles.html" class="active"><i class="fas fa-car"></i> Vehicles</a></li>
+                <li><a href="auctions.html"><i class="fas fa-gavel"></i> Auctions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="listings-page">
+        <h1><i class="fas fa-car-side"></i> Vehicle Marketplace</h1>
+        <div class="filters">
+            <select name="type">
+                <option value="">All Types</option>
+                <option value="car">Car</option>
+                <option value="motorcycle">Motorcycle</option>
+                <option value="suv">SUV</option>
+            </select>
+            <select name="status">
+                <option value="">For Rent/Sale</option>
+                <option value="rent">For Rent</option>
+                <option value="sale">For Sale</option>
+            </select>
+             <input type="text" placeholder="Make/Model (e.g., Toyota Prius)">
+            <button>Search</button>
+        </div>
+
+        <div class="listings-grid">
+            <div class="card listing-card">
+                <img src="images/placeholder-car.png" alt="Vehicle Image"> <div class="card-content">
+                    <h3>Toyota Camry Hybrid 2022</h3>
+                    <p class="price">$25,000</p>
+                    <p class="details"><i class="fas fa-gas-pump"></i> Hybrid | <i class="fas fa-tachometer-alt"></i> 30k km | <i class="fas fa-calendar-alt"></i> 2022</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Tbilisi</p>
+                    <span class="status-tag sale">For Sale</span>
+                </div>
+            </div>
+
+            <div class="card listing-card">
+                <img src="images/placeholder-car-2.png" alt="Vehicle Image"> <div class="card-content">
+                     <h3>BMW X5 2023 - Rental</h3>
+                     <p class="price">$150 / day</p>
+                    <p class="details"><i class="fas fa-gas-pump"></i> Petrol | <i class="fas fa-chair"></i> 5 Seats | <i class="fas fa-snowflake"></i> A/C</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Batumi</p>
+                    <span class="status-tag rent">For Rent</span>
+                </div>
+            </div>
+
+             </div>
+         <p class="placeholder-note">Note: Listings shown are examples. Real data requires a backend system.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FuturaWave Portal. All rights reserved for 90talghawave@gmail.com</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
